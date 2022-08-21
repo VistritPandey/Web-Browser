@@ -8,20 +8,20 @@
 import SwiftUI
 import WebKit
 
-struct WKView: UIViewRepresentable {
+struct WKView:UIViewRepresentable {
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
     
     @ObservedObject var webViewStateModel: WebView
-    typealias UIVewType = WKWebView
+    typealias UIViewType = WKWebView
     
-    class Coordinator: NSObject, WKNavigationDelegate {
-        let parent: WKView
-        init(_ parent:WKView){
+    class Coordinator: NSObject,WKNavigationDelegate {
+        let parent:WKView
+        init(_ parent:WKView) {
             self.parent = parent
         }
-        func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+        func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
             if parent.webViewStateModel.goBack{
                 webView.goBack()
                 parent.webViewStateModel.goBack = false
@@ -33,13 +33,14 @@ struct WKView: UIViewRepresentable {
         }
     }
     
-    func makeUIView(context: Context) -> some UIView {
+    func makeUIView(context: Context) -> WKWebView {
         let view = WKWebView(frame: CGRect.zero)
         view.navigationDelegate = context.coordinator
         view.allowsBackForwardNavigationGestures = true
         view.scrollView.isScrollEnabled = true
         return view
     }
+    
     func updateUIView(_ uiView: WKWebView, context: Context) {
         uiView.load(URLRequest(url: URL(string: webViewStateModel.pageTitle)!))
         if webViewStateModel.goToPage{
