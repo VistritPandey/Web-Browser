@@ -8,7 +8,7 @@
 import Foundation
 
 class WebView: ObservableObject {
-    @Published var pageTitle: String = "https://google.com"
+    @Published var pageTitle: String = "https://neeva.com"
     @Published var goToPage: Bool = false
     @Published var goBack: Bool = false
     @Published var goForward: Bool = false

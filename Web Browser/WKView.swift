@@ -13,7 +13,7 @@ struct WKView:UIViewRepresentable {
         Coordinator(self)
     }
     
-    @ObservedObject var webViewStateModel: WebView
+    @ObservedObject var webView: WebView
     typealias UIViewType = WKWebView
     
     class Coordinator: NSObject,WKNavigationDelegate {
@@ -22,13 +22,13 @@ struct WKView:UIViewRepresentable {
             self.parent = parent
         }
         func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-            if parent.webViewStateModel.goBack{
+            if parent.webView.goBack{
                 webView.goBack()
-                parent.webViewStateModel.goBack = false
+                parent.webView.goBack = false
             }
-            if parent.webViewStateModel.goForward{
+            if parent.webView.goForward{
                 webView.goForward()
-                parent.webViewStateModel.goForward = false
+                parent.webView.goForward = false
             }
         }
     }
@@ -42,10 +42,10 @@ struct WKView:UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: WKWebView, context: Context) {
-        uiView.load(URLRequest(url: URL(string: webViewStateModel.pageTitle)!))
-        if webViewStateModel.goToPage{
-            uiView.load(URLRequest(url: URL(string: webViewStateModel.pageTitle)!))
-            webViewStateModel.goToPage = false
+        uiView.load(URLRequest(url: URL(string: webView.pageTitle)!))
+        if webView.goToPage{
+            uiView.load(URLRequest(url: URL(string: webView.pageTitle)!))
+            webView.goToPage = false
         }
     }
 }

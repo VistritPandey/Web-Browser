@@ -8,12 +8,44 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        Text("Hello, world!")
-            .padding()
-        
-    }
-}
+    @ObservedObject var webView:WebView = WebView()
+        @State private var webAddress = "https://neeva.com"
+        var body: some View {
+            VStack{
+                HStack{
+                    TextField("Enter Web Address",text: $webAddress)
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.gray)
+                        .cornerRadius(25)
+                    Button(action: {
+                        webView.pageTitle = webAddress
+                        webView.goToPage = true
+                    }, label: {
+                        Image(systemName: "magnifyingglass.circle.fill")
+                    })
+                    .font(.title)
+                }
+                WKView(webView: webView)
+                
+            }
+            .toolbar{
+                ToolbarItem(placement: ToolbarItemPlacement.bottomBar){
+                    HStack{
+                        Button(action: {
+                            webView.goBack = true
+                        }, label: {
+                            Image(systemName: "arrow.backward")
+                        })
+                        Button(action: {
+                            webView.goForward = true
+                        }, label: {
+                            Image(systemName: "arrow.forward")
+                        })
+                    }
+                }
+            }
+        }}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
