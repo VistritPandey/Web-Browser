@@ -14,6 +14,8 @@
 		10D1F34528B2D9B000A6F9C9 /* Web_BrowserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D1F34428B2D9B000A6F9C9 /* Web_BrowserTests.swift */; };
 		10D1F34F28B2D9B000A6F9C9 /* Web_BrowserUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D1F34E28B2D9B000A6F9C9 /* Web_BrowserUITests.swift */; };
 		10D1F35128B2D9B000A6F9C9 /* Web_BrowserUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D1F35028B2D9B000A6F9C9 /* Web_BrowserUITestsLaunchTests.swift */; };
+		10D1F36028B2E45000A6F9C9 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D1F35F28B2E45000A6F9C9 /* WebView.swift */; };
+		10D1F36228B2E59D00A6F9C9 /* WKView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D1F36128B2E59D00A6F9C9 /* WKView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		10D1F34A28B2D9B000A6F9C9 /* Web BrowserUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Web BrowserUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		10D1F34E28B2D9B000A6F9C9 /* Web_BrowserUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Web_BrowserUITests.swift; sourceTree = "<group>"; };
 		10D1F35028B2D9B000A6F9C9 /* Web_BrowserUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Web_BrowserUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		10D1F35F28B2E45000A6F9C9 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		10D1F36128B2E59D00A6F9C9 /* WKView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,8 @@
 				10D1F33528B2D9B000A6F9C9 /* ContentView.swift */,
 				10D1F33728B2D9B000A6F9C9 /* Assets.xcassets */,
 				10D1F33928B2D9B000A6F9C9 /* Preview Content */,
+				10D1F35F28B2E45000A6F9C9 /* WebView.swift */,
+				10D1F36128B2E59D00A6F9C9 /* WKView.swift */,
 			);
 			path = "Web Browser";
 			sourceTree = "<group>";
@@ -257,6 +263,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10D1F36228B2E59D00A6F9C9 /* WKView.swift in Sources */,
+				10D1F36028B2E45000A6F9C9 /* WebView.swift in Sources */,
 				10D1F33628B2D9B000A6F9C9 /* ContentView.swift in Sources */,
 				10D1F33428B2D9B000A6F9C9 /* Web_BrowserApp.swift in Sources */,
 			);
