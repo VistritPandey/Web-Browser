@@ -9,15 +9,33 @@ import SwiftUI
 import WebKit
 
 struct WKView: UIViewRepresentable {
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+    
     @ObservedObject var webViewStateModel: WebView
     typealias UIVewType = WKWebView
     
     class Coordinator: NSObject, WKNavigationDelegate {
-        
+        let parent: WKView
+        init(_ parent:WKView){
+            self.parent = parent
+        }
+        func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+            if parent.webViewStateModel.goBack{
+                webView.goBack()
+                parent.webViewStateModel.goBack = false
+            }
+            if parent.webViewStateModel.goForward{
+                webView.goForward()
+                parent.webViewStateModel.goForward = false
+            }
+        }
     }
     
     func makeUIView(context: Context) -> some UIView {
         let view = WKWebView(frame: CGRect.zero)
+        view.navigationDelegate = context.coordinator
         view.allowsBackForwardNavigationGestures = true
         view.scrollView.isScrollEnabled = true
         return view
